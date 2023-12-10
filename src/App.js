@@ -1,23 +1,42 @@
-import logo from './logo.svg';
 import './App.css';
+import React from 'react';
+import { useState } from 'react';
 
 function App() {
+  const [task, setTask] = useState(null);
+  const [taskList, setTaskList] = useState([]);
+
+  function onChangeTask(e) {
+    setTask(e.target.value);
+  }
+
+  function handleClick() {
+    taskList.push(task);
+    setTaskList(taskList);
+    setTask('');
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>TODOアプリ</h1>
+      <div>
+        <input type="text" placeholder='タイトル' value={task} onChange={onChangeTask} />
+        <button onClick={handleClick}>追加</button>
+        <table>
+          <tbody>
+            {taskList.map((task) => {
+              return (
+                <tr>
+                  <td><input type="checkbox" /></td>
+                  <td>{task}</td>
+                  <td><button>削除</button></td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+        <input type="text" placeholder='検索...' />
+      </div>
     </div>
   );
 }
