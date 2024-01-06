@@ -46,6 +46,9 @@ h1 {
 }
 
 .Card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: #fff;
   border-radius: 2px;
   display: inline-block;
@@ -75,10 +78,20 @@ h1 {
   }
 }
 
-.TaskTable {
+.TaskList {
   display: flex;
   justify-content: center;
+  align-items: center;
+  flex-direction: column;
   margin-top: 1rem;
+
+  li {
+    align-items: center;
+    justify-items: center;
+    display: flex;
+    list-style-type: none;
+    padding: 0.5rem;
+  }
 
   input[type=checkbox] {
     transform: scale(2);
